@@ -64,8 +64,11 @@ function Board() {
 	function renderSquare(i) {
 		return (
 			<Button
+				margin="2"
 				height="100px"
 				width="100px"
+				variant="outline"
+				color="gray.50"
 				className="square"
 				onClick={() => handleSelectSquare(i)}
 			>
@@ -76,7 +79,7 @@ function Board() {
 
 	return (
 		<Box>
-			<Text fontSize="50px">{status}</Text>
+			<Text fontSize="40px">{status}</Text>
 			<Box>
 				{renderSquare(0)}
 				{renderSquare(1)}
@@ -103,12 +106,17 @@ function Game() {
 	}
 
 	return (
-		<Box align="center" bg="cyan">
+		<Box align="center" bg="gray">
+			<Text fontSize="50px" fontWeight="semibold">
+				Tic-Tac-Toe
+			</Text>
 			<Box>
 				<Board />
 			</Box>
-			<Button height="50px" width="100px" onClick={handleRestart}>
-				<Text fontSize="20px"> Restart</Text>
+			<Button height="50px" width="100px" mt="10px" onClick={handleRestart}>
+				<Text fontSize="20px" fontWeight="semibold">
+					Restart
+				</Text>
 			</Button>
 		</Box>
 	);

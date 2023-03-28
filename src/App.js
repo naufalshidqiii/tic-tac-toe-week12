@@ -1,6 +1,7 @@
 import * as React from "react";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Provider, useDispatch, useSelector } from "react-redux";
+import { Text, Box, Flex, Grid, Button } from "@chakra-ui/react";
 
 const ticTacToe = createSlice({
 	name: "ticTacToe",
@@ -44,7 +45,7 @@ const ticTacToe = createSlice({
 	},
 });
 
-//Actions
+//Redux Actions
 export const { selectSquare, restart } = ticTacToe.actions;
 
 //Redux Store
@@ -60,35 +61,38 @@ function Board() {
 		dispatch(selectSquare(i));
 	}
 
-	function restart() {}
-
 	function renderSquare(i) {
 		return (
-			<button className="square" onClick={() => handleSelectSquare(i)}>
+			<Button
+				height="100px"
+				width="100px"
+				className="square"
+				onClick={() => handleSelectSquare(i)}
+			>
 				{squares[i]}
-			</button>
+			</Button>
 		);
 	}
 
 	return (
-		<div>
-			<div>{status}</div>
-			<div>
+		<Box>
+			<Text fontSize="50px">{status}</Text>
+			<Box>
 				{renderSquare(0)}
 				{renderSquare(1)}
 				{renderSquare(2)}
-			</div>
-			<div>
+			</Box>
+			<Box>
 				{renderSquare(3)}
 				{renderSquare(4)}
 				{renderSquare(5)}
-			</div>
-			<div>
+			</Box>
+			<Box>
 				{renderSquare(6)}
 				{renderSquare(7)}
 				{renderSquare(8)}
-			</div>
-		</div>
+			</Box>
+		</Box>
 	);
 }
 
@@ -99,12 +103,14 @@ function Game() {
 	}
 
 	return (
-		<div>
-			<div>
+		<Box align="center" bg="cyan">
+			<Box>
 				<Board />
-			</div>
-			<button onClick={handleRestart}>restart</button>
-		</div>
+			</Box>
+			<Button height="50px" width="100px" onClick={handleRestart}>
+				<Text fontSize="20px"> Restart</Text>
+			</Button>
+		</Box>
 	);
 }
 

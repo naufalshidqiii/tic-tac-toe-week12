@@ -1,7 +1,14 @@
 import * as React from "react";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import { Text, Box, Flex, Grid, Button } from "@chakra-ui/react";
+import {
+	ChakraProvider,
+	Text,
+	Box,
+	Flex,
+	Grid,
+	Button,
+} from "@chakra-ui/react";
 
 const ticTacToe = createSlice({
 	name: "ticTacToe",
@@ -159,8 +166,10 @@ function calculateWinner(squares) {
 
 export default function App() {
 	return (
-		<Provider store={store}>
-			<Game />
-		</Provider>
+		<ChakraProvider>
+			<Provider store={store}>
+				<Game />
+			</Provider>
+		</ChakraProvider>
 	);
 }
